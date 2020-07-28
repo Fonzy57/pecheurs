@@ -2,13 +2,25 @@
 
 namespace App\Entity;
 
-use App\Repository\PostRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PostRepository;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
+ * @ApiResource(
+ *      normalizationContext={"groups"={"read:post"}},
+ *      collectionOperations={"get", "post"},
+ *      itemOperations={"get"}
+ * )
+ * @ApiFilter(SearchFilter::class,
+ *      properties={"commentaire": "exact"}
+ * )
  */
 class Post
 {
@@ -16,41 +28,49 @@ class Post
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"read:post"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read:post"})
      */
     private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read:post"})
      */
     private $photo_poisson;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"read:post"})
      */
     private $taille_poisson;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"read:post"})
      */
     private $poids_poisson;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"read:post"})
      */
     private $contenu_post;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read:post"})
      */
     private $nom_auteur;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read:post"})
      */
     private $prenom_auteur;
 
@@ -66,6 +86,7 @@ class Post
 
     /**
      * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="post")
+     * @Groups({"read:post"})
      */
     private $commentaires;
 

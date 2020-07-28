@@ -2,11 +2,26 @@
 
 namespace App\Entity;
 
-use App\Repository\CommentaireRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CommentaireRepository;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ORM\Entity(repositoryClass=CommentaireRepository::class)
+ * @ApiResource(
+ *      attributes={
+ *          "order"={"createdAt":"DESC"}
+ *      },
+ *      normalizationContext={"groups"={"read:commentaire"}},
+ *      collectionOperations={"get", "post"},
+ *      itemOperations={"get"}
+ * )
+ * @ApiFilter(SearchFilter::class,
+ *      properties={"post": "exact"}
+ * )
  */
 class Commentaire
 {
@@ -14,26 +29,31 @@ class Commentaire
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"read:commentaire"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read:commentaire"})
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read:commentaire"})
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"read:commentaire"})
      */
     private $contenu_commentaire;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"read:commentaire"})
      */
     private $date_commentaire;
 
@@ -49,6 +69,7 @@ class Commentaire
 
     /**
      * @ORM\ManyToOne(targetEntity=Post::class, inversedBy="commentaires")
+     * @Groups({"read:commentaire"})
      */
     private $post;
 
