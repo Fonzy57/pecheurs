@@ -90,152 +90,153 @@ class Post
      */
     private $commentaires;
 
-    public function __construct()
-    {
-        $this->commentaires = new ArrayCollection();
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getTitre(): ?string
-    {
-        return $this->titre;
-    }
-
-    public function setTitre(string $titre): self
-    {
-        $this->titre = $titre;
-
-        return $this;
-    }
-
-    public function getPhotoPoisson(): ?string
-    {
-        return $this->photo_poisson;
-    }
-
-    public function setPhotoPoisson(string $photo_poisson): self
-    {
-        $this->photo_poisson = $photo_poisson;
-
-        return $this;
-    }
-
-    public function getTaillePoisson(): ?float
-    {
-        return $this->taille_poisson;
-    }
-
-    public function setTaillePoisson(float $taille_poisson): self
-    {
-        $this->taille_poisson = $taille_poisson;
-
-        return $this;
-    }
-
-    public function getPoidsPoisson(): ?float
-    {
-        return $this->poids_poisson;
-    }
-
-    public function setPoidsPoisson(float $poids_poisson): self
-    {
-        $this->poids_poisson = $poids_poisson;
-
-        return $this;
-    }
-
-    public function getContenuPost(): ?string
-    {
-        return $this->contenu_post;
-    }
-
-    public function setContenuPost(string $contenu_post): self
-    {
-        $this->contenu_post = $contenu_post;
-
-        return $this;
-    }
-
-    public function getNomAuteur(): ?string
-    {
-        return $this->nom_auteur;
-    }
-
-    public function setNomAuteur(string $nom_auteur): self
-    {
-        $this->nom_auteur = $nom_auteur;
-
-        return $this;
-    }
-
-    public function getPrenomAuteur(): ?string
-    {
-        return $this->prenom_auteur;
-    }
-
-    public function setPrenomAuteur(string $prenom_auteur): self
-    {
-        $this->prenom_auteur = $prenom_auteur;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getCreatedBy(): ?string
-    {
-        return $this->createdBy;
-    }
-
-    public function setCreatedBy(string $createdBy): self
-    {
-        $this->createdBy = $createdBy;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Commentaire[]
-     */
-    public function getCommentaires(): Collection
-    {
-        return $this->commentaires;
-    }
-
-    public function addCommentaire(Commentaire $commentaire): self
-    {
-        if (!$this->commentaires->contains($commentaire)) {
-            $this->commentaires[] = $commentaire;
-            $commentaire->setPost($this);
+    //--------- Les différentes méthodes---------
+        public function __construct()
+        {
+            $this->commentaires = new ArrayCollection();
         }
 
-        return $this;
-    }
+        public function getId(): ?int
+        {
+            return $this->id;
+        }
 
-    public function removeCommentaire(Commentaire $commentaire): self
-    {
-        if ($this->commentaires->contains($commentaire)) {
-            $this->commentaires->removeElement($commentaire);
-            // set the owning side to null (unless already changed)
-            if ($commentaire->getPost() === $this) {
-                $commentaire->setPost(null);
+        public function getTitre(): ?string
+        {
+            return $this->titre;
+        }
+
+        public function setTitre(string $titre): self
+        {
+            $this->titre = $titre;
+
+            return $this;
+        }
+
+        public function getPhotoPoisson(): ?string
+        {
+            return $this->photo_poisson;
+        }
+
+        public function setPhotoPoisson(string $photo_poisson): self
+        {
+            $this->photo_poisson = $photo_poisson;
+
+            return $this;
+        }
+
+        public function getTaillePoisson(): ?float
+        {
+            return $this->taille_poisson;
+        }
+
+        public function setTaillePoisson(float $taille_poisson): self
+        {
+            $this->taille_poisson = $taille_poisson;
+
+            return $this;
+        }
+
+        public function getPoidsPoisson(): ?float
+        {
+            return $this->poids_poisson;
+        }
+
+        public function setPoidsPoisson(float $poids_poisson): self
+        {
+            $this->poids_poisson = $poids_poisson;
+
+            return $this;
+        }
+
+        public function getContenuPost(): ?string
+        {
+            return $this->contenu_post;
+        }
+
+        public function setContenuPost(string $contenu_post): self
+        {
+            $this->contenu_post = $contenu_post;
+
+            return $this;
+        }
+
+        public function getNomAuteur(): ?string
+        {
+            return $this->nom_auteur;
+        }
+
+        public function setNomAuteur(string $nom_auteur): self
+        {
+            $this->nom_auteur = $nom_auteur;
+
+            return $this;
+        }
+
+        public function getPrenomAuteur(): ?string
+        {
+            return $this->prenom_auteur;
+        }
+
+        public function setPrenomAuteur(string $prenom_auteur): self
+        {
+            $this->prenom_auteur = $prenom_auteur;
+
+            return $this;
+        }
+
+        public function getCreatedAt(): ?\DateTimeInterface
+        {
+            return $this->createdAt;
+        }
+
+        public function setCreatedAt(\DateTimeInterface $createdAt): self
+        {
+            $this->createdAt = $createdAt;
+
+            return $this;
+        }
+
+        public function getCreatedBy(): ?string
+        {
+            return $this->createdBy;
+        }
+
+        public function setCreatedBy(string $createdBy): self
+        {
+            $this->createdBy = $createdBy;
+
+            return $this;
+        }
+
+        /**
+         * @return Collection|Commentaire[]
+         */
+        public function getCommentaires(): Collection
+        {
+            return $this->commentaires;
+        }
+
+        public function addCommentaire(Commentaire $commentaire): self
+        {
+            if (!$this->commentaires->contains($commentaire)) {
+                $this->commentaires[] = $commentaire;
+                $commentaire->setPost($this);
             }
+
+            return $this;
         }
 
-        return $this;
-    }
+        public function removeCommentaire(Commentaire $commentaire): self
+        {
+            if ($this->commentaires->contains($commentaire)) {
+                $this->commentaires->removeElement($commentaire);
+                // set the owning side to null (unless already changed)
+                if ($commentaire->getPost() === $this) {
+                    $commentaire->setPost(null);
+                }
+            }
+
+            return $this;
+        }
 }
