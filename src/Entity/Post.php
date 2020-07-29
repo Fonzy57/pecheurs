@@ -90,6 +90,12 @@ class Post
      */
     private $commentaires;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups({"read:post"})
+     */
+    private $nom_poisson;
+
     //--------- Les différentes méthodes---------
         public function __construct()
         {
@@ -236,6 +242,18 @@ class Post
                     $commentaire->setPost(null);
                 }
             }
+
+            return $this;
+        }
+
+        public function getNomPoisson(): ?string
+        {
+            return $this->nom_poisson;
+        }
+
+        public function setNomPoisson(string $nom_poisson): self
+        {
+            $this->nom_poisson = $nom_poisson;
 
             return $this;
         }
