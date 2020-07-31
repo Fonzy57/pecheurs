@@ -76,6 +76,7 @@ class Post
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"read:post"})
      */
     private $createdAt;
 
