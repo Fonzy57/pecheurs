@@ -38,11 +38,11 @@ On utilise composer pour installer Api Platform dans notre projet Symfony.
 
 ## `composer require api`
 
-Symfony c'est directement à quel bundle on fait appelle avec cette commande.
+Symfony sait directement à quel bundle on fait appelle avec cette commande.
 
 ## 5 - Configuration et réglages d'Api Platform
 
-De base Api Platform renvoi du json+ld, mais dans notre cas il nous faut seulement du json. Pour ce faire on se rend dans le fichier "api_platform.yaml" ( config>api_platform.yaml ) en précisant le format que l'on souhaite:
+De base Api Platform renvoi du json+ld, mais dans notre cas il nous faut seulement du json. Pour ce faire on se rend dans le fichier "api_platform.yaml" ( config > api_platform.yaml ) en précisant le format que l'on souhaite:
 
 ```
 api_platform:
@@ -86,7 +86,7 @@ class Commentaire
 {......
 ```
 
-Le simple fait de rajouter l'annotation "@ApiResource()" crée l'API directement, dans les parenthèses ce sont les différents paramètres que l'on peut rajouter.
+Le simple fait de rajouter l'annotation `@ApiResource()` crée l'API directement, dans les parenthèses ce sont les différents paramètres que l'on peut rajouter.
 Dans notre exemple ci-dessus:
 * `attributes={"order"={"createdAt":"DESC"}}` grâce à cette annotation on aura les derniers Post et/ou Commentaire qui seront affichés en premier.
 * `normalizationContext={"groups"={"read:post"}}` nous permet de créer des groupes, et au dessus des attributs que l'on veut afficher on rajoute l'annotation `* @Groups({"read:commentaire"})`
