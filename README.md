@@ -110,6 +110,7 @@ nelmio_cors:
         '^/': null
 ```
 
-Dans le fichier .env il y a également une ligne qui a été rajouté automatiquement `CORS_ALLOW_ORIGIN=^https?://(localhost|127\.0\.0\.1)(:[0-9]+)?$`
+Dans le fichier .env il y a également une ligne qui a été rajouté automatiquement:
+`CORS_ALLOW_ORIGIN=^https?://(localhost|127\.0\.0\.1)(:[0-9]+)?$`
 
 Avec tous ces réglages l'API est fonctionnelle !
